@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS Product
 -- Step: 03
 -- Goal: Fill table Product with data
 -- **********************************************************************************
+
 -- Version       Date:           Author:                     Description:
 -- *******       **********      ****************            ******************
 -- 01            10-09-2026      Oussama                     New
@@ -74,6 +75,7 @@ VALUES
     ,('Zoute Ruitjes', '8719587323256', 1, NULL, SYSDATE(6), SYSDATE(6));
 
 
+
 -- Step: 04
 -- Goal: Create a new table Allergeen
 -- **********************************************************************************
@@ -102,6 +104,7 @@ CREATE TABLE IF NOT EXISTS Allergeen
 -- Step: 05
 -- Goal: Fill table Allergeen with data
 -- **********************************************************************************
+
 -- Version       Date:           Author:                     Description:
 -- *******       **********      ****************            ******************
 -- 01            10-09-2026      Oussama                     New
@@ -124,6 +127,7 @@ VALUES
     ,('Soja', 'Dit product bevat soja', 1, NULL, SYSDATE(6), SYSDATE(6));
 
 
+
 -- Step: 06
 -- Goal: Create a new table Leverancier
 -- **********************************************************************************
@@ -137,15 +141,15 @@ DROP TABLE IF EXISTS Leverancier;
 
 CREATE TABLE IF NOT EXISTS Leverancier
 (
-    Id                  TINYINT         UNSIGNED        NOT NULL    AUTO_INCREMENT
-   ,Naam                VARCHAR(50)                     NOT NULL
-   ,ContactPersoon      VARCHAR(50)                     NOT NULL
-   ,LeverancierNummer   VARCHAR(15)                     NOT NULL
-   ,Mobiel              VARCHAR(12)                     NOT NULL
-   ,IsActief            BIT                             NOT NULL    DEFAULT 1
-   ,Opmerkingen         VARCHAR(250)                        NULL    DEFAULT NULL
-   ,DatumAangemaakt     DateTime(6)                     NOT NULL
-   ,DatumGewijzigd      DateTime(6)                     NOT NULL
+    Id                TINYINT         UNSIGNED        NOT NULL    AUTO_INCREMENT
+   ,Naam              VARCHAR(50)                     NOT NULL
+   ,ContactPersoon    VARCHAR(50)                     NOT NULL
+   ,LeverancierNummer VARCHAR(15)                     NOT NULL
+   ,Mobiel            VARCHAR(12)                     NOT NULL
+   ,IsActief          BIT                             NOT NULL    DEFAULT 1
+   ,Opmerkingen       VARCHAR(250)                        NULL    DEFAULT NULL
+   ,DatumAangemaakt   DateTime(6)                     NOT NULL
+   ,DatumGewijzigd    DateTime(6)                     NOT NULL
 
    ,CONSTRAINT      PK_Leverancier_Id   PRIMARY KEY CLUSTERED(Id)
 ) ENGINE=InnoDB;
@@ -154,6 +158,7 @@ CREATE TABLE IF NOT EXISTS Leverancier
 -- Step: 07
 -- Goal: Fill table Leverancier with data
 -- **********************************************************************************
+
 -- Version       Date:           Author:                     Description:
 -- *******       **********      ****************            ******************
 -- 01            10-09-2026      Oussama                     New
@@ -178,6 +183,7 @@ VALUES
     ,('De Bron', 'Remco Veenstra', 'L1023857736', '06-34291234', 1, NULL, SYSDATE(6), SYSDATE(6));
 
 
+
 -- Step: 08
 -- Goal: Create a new table Magazijn
 -- **********************************************************************************
@@ -191,14 +197,14 @@ DROP TABLE IF EXISTS Magazijn;
 
 CREATE TABLE IF NOT EXISTS Magazijn
 (
-    Id                  TINYINT         UNSIGNED        NOT NULL    AUTO_INCREMENT
-   ,ProductId           TINYINT         UNSIGNED        NOT NULL
-   ,VerpakkingsEenheid  DECIMAL(5,2)    UNSIGNED        NOT NULL
-   ,AantalAanwezig      SMALLINT        UNSIGNED            NULL    DEFAULT NULL
-   ,IsActief            BIT                             NOT NULL    DEFAULT 1
-   ,Opmerkingen         VARCHAR(250)                        NULL    DEFAULT NULL
-   ,DatumAangemaakt     DateTime(6)                     NOT NULL
-   ,DatumGewijzigd      DateTime(6)                     NOT NULL
+    Id                 TINYINT         UNSIGNED        NOT NULL    AUTO_INCREMENT
+   ,ProductId          TINYINT         UNSIGNED        NOT NULL
+   ,VerpakkingsEenheid DECIMAL(5,2)    UNSIGNED        NOT NULL
+   ,AantalAanwezig     SMALLINT        UNSIGNED            NULL    DEFAULT NULL
+   ,IsActief           BIT                             NOT NULL    DEFAULT 1
+   ,Opmerkingen        VARCHAR(250)                        NULL    DEFAULT NULL
+   ,DatumAangemaakt    DateTime(6)                     NOT NULL
+   ,DatumGewijzigd     DateTime(6)                     NOT NULL
 
    ,CONSTRAINT      PK_Magazijn_Id   PRIMARY KEY CLUSTERED(Id)
    ,CONSTRAINT      FK_Magazijn_ProductId_Product_Id  FOREIGN KEY (ProductId) REFERENCES Product(Id)
@@ -208,6 +214,7 @@ CREATE TABLE IF NOT EXISTS Magazijn
 -- Step: 09
 -- Goal: Fill table Magazijn with data
 -- **********************************************************************************
+
 -- Version       Date:           Author:                     Description:
 -- *******       **********      ****************            ******************
 -- 01            10-09-2026      Oussama                     New
@@ -237,6 +244,7 @@ VALUES
     ,(11, 2, 367, 1, NULL, SYSDATE(6), SYSDATE(6))
     ,(12, 1, 467, 1, NULL, SYSDATE(6), SYSDATE(6))
     ,(13, 5, 20, 1, NULL, SYSDATE(6), SYSDATE(6));
+
 
 
 -- Step: 10
@@ -269,6 +277,7 @@ CREATE TABLE IF NOT EXISTS ProductPerAllergeen
 -- Step: 11
 -- Goal: Fill table ProductPerAllergeen with data
 -- **********************************************************************************
+
 -- Version       Date:           Author:                     Description:
 -- *******       **********      ****************            ******************
 -- 01            10-09-2026      Oussama                     New
@@ -298,6 +307,7 @@ VALUES
     ,(13, 5, 1, NULL, SYSDATE(6), SYSDATE(6));
 
 
+
 -- Step: 12
 -- Goal: Create a new table ProductPerLeverancier
 -- **********************************************************************************
@@ -311,16 +321,16 @@ DROP TABLE IF EXISTS ProductPerLeverancier;
 
 CREATE TABLE IF NOT EXISTS ProductPerLeverancier
 (
-    Id                              TINYINT         UNSIGNED        NOT NULL    AUTO_INCREMENT
-   ,LeverancierId                   TINYINT         UNSIGNED        NOT NULL
-   ,ProductId                       TINYINT         UNSIGNED        NOT NULL
-   ,DatumLevering                   DATE                            NOT NULL
-   ,Aantal                          SMALLINT        UNSIGNED        NOT NULL
-   ,DatumEerstVolgendeLevering      DATE                                NULL    DEFAULT NULL
-   ,IsActief                        BIT                             NOT NULL    DEFAULT 1
-   ,Opmerkingen                     VARCHAR(250)                        NULL    DEFAULT NULL
-   ,DatumAangemaakt                 DateTime(6)                     NOT NULL
-   ,DatumGewijzigd                  DateTime(6)                     NOT NULL
+    Id                         TINYINT         UNSIGNED        NOT NULL    AUTO_INCREMENT
+   ,LeverancierId              TINYINT         UNSIGNED        NOT NULL
+   ,ProductId                  TINYINT         UNSIGNED        NOT NULL
+   ,DatumLevering              DATE                            NOT NULL
+   ,Aantal                     SMALLINT        UNSIGNED        NOT NULL
+   ,DatumEerstVolgendeLevering DATE                                NULL    DEFAULT NULL
+   ,IsActief                   BIT                             NOT NULL    DEFAULT 1
+   ,Opmerkingen                VARCHAR(250)                        NULL    DEFAULT NULL
+   ,DatumAangemaakt            DateTime(6)                     NOT NULL
+   ,DatumGewijzigd             DateTime(6)                     NOT NULL
 
    ,CONSTRAINT      PK_ProductPerLeverancier_Id   PRIMARY KEY CLUSTERED(Id)
    ,CONSTRAINT      FK_ProductPerLeverancier_LeverancierId_Leverancier_Id  FOREIGN KEY (LeverancierId) REFERENCES Leverancier(Id)
@@ -331,6 +341,7 @@ CREATE TABLE IF NOT EXISTS ProductPerLeverancier
 -- Step: 13
 -- Goal: Fill table ProductPerLeverancier with data
 -- **********************************************************************************
+
 -- Version       Date:           Author:                     Description:
 -- *******       **********      ****************            ******************
 -- 01            10-09-2026      Oussama                     New
@@ -366,3 +377,4 @@ VALUES
     ,(5, 11, '2024-10-19', 60, '2024-10-26', 1, NULL, SYSDATE(6), SYSDATE(6))
     ,(5, 12, '2024-10-11', 45, NULL, 1, NULL, SYSDATE(6), SYSDATE(6))
     ,(5, 13, '2024-10-12', 23, NULL, 1, NULL, SYSDATE(6), SYSDATE(6));
+
