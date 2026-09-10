@@ -31,11 +31,9 @@ class AuthenticatedSessionController extends Controller
         $role = strtolower($request->user()->rolename ?? '');
 
         return redirect()->intended(match($role) {
-            'patient' => route('patient.index'),
-            'tandarts' => route('tandarts.index'),
-            'mondhygienist' => route('mondhygienist.index'),
-            'assistent' => route('assistent.index'),
-            'praktijkmanagement' => route('praktijkmanagement.index'),
+            'magazijnmedewerker' => route('magazijnmedewerker.index'),
+            'inkoper' => route('inkoper.index'),
+            'magazijnbeheerder' => route('magazijnbeheerder.index'),
             default => route('welcome'),
         });
     }

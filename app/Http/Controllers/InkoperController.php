@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AssistentController extends Controller
+class InkoperController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -12,8 +12,8 @@ class AssistentController extends Controller
     public function index()
     {
         // View
-        return view('Assistent.index', [
-            'title' => 'Assistent Home'
+        return view('Inkoper.index', [
+            'title' => 'Inkoper Home'
         ]);
     }
 
