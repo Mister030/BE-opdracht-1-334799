@@ -1,0 +1,13 @@
+Registreer deze 5 gebruikers via http://127.0.0.1:8000/register
+(exact zoals in de afbeeldingen van opdracht 3.1 - wachtwoord is mijn eigen
+keuze omdat dat in de afbeelding niet leesbaar is, pas het gerust aan):
+
+Name                 Email                              Rolename            Password
+Tandarts             tandarts@smilepro.nl               tandarts            password
+Mondhygienist        mondhygienist@smilepro.nl           mondhygienist       password
+Assistent            assistent@smilepro.nl               assistent           password
+Praktijkmanagement   praktijkmanagement@smilepro.nl       praktijkmanagement  password
+Patient              patient@smilepro.nl                 patient             password
+
+Controleer daarna in phpMyAdmin (backend_lj_2 > users) of alle 5 rijen
+met hun rolename correct zijn opgeslagen.
