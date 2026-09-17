@@ -44,7 +44,7 @@ de Jamin-tabellen via de connectie `jamin` uit `config/database.php`.
 | `database/migrations/` | Migraties en het createscript van de database Jamin |
 | `db/` | Export van de database Jamin |
 | `docs/` | Database Specificatie Tabel |
-| `vids/` | Schermopname van de gerealiseerde scenario's |
+| `vids/` | Schermopname van de gerealiseerde scenario's (toevoegen bij het inleveren) |
 
 ## Installeren
 ```bash
@@ -64,22 +64,7 @@ DB_PASSWORD=
 Databases aanmaken en starten:
 ```bash
 php artisan migrate
-php artisan db:seed
 php artisan serve
 ```
 
-## Testgebruikers
-| E-mail | Rol |
-|---|---|
-| magazijnmedewerker@jamin.nl | magazijnmedewerker |
-| inkoper@jamin.nl | inkoper |
-| magazijnbeheerder@jamin.nl | magazijnbeheerder |
-
-Wachtwoord van alle drie: `password`.
-
-## Tests
-```bash
-php artisan test tests/Feature/Jamin
-```
-De tests draaien tegen de MySQL-database `Jamin` en controleren per scenario de
-getoonde gegevens, de sortering en de doorverwijzing na 4 seconden.
+Registreer daarna via `/register` een gebruiker met rolename `magazijnmedewerker`.
