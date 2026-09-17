@@ -26,11 +26,23 @@ Laravel-applicatie voor het bedrijf Jamin. Klas IO-SD-2509, studentnummer 334799
   binding, zodat SQL-injectie niet mogelijk is. Geen Eloquent voor de Jamin-tabellen.
 - Codeconventie PSR-12.
 
+## Databases
+Er zijn twee databases:
+
+| Database | Inhoud | Aangemaakt door |
+|---|---|---|
+| `backend_lj_2` | Laravel zelf: `users`, `sessions`, `cache`, `migrations` | `php artisan migrate` |
+| `Jamin` | De zes specificatietabellen van de opdracht | het createscript |
+
+Het createscript `database/migrations/create_script_jamin_1.sql` wordt uitgevoerd door
+de migratie `0001_01_01_000003_create_Import_database_jamin.php`. De modellen benaderen
+de Jamin-tabellen via de connectie `jamin` uit `config/database.php`.
+
 ## Mappen
 | Map | Inhoud |
 |---|---|
-| `database/sql/` | Createscript van de database Jamin |
-| `db/` | Createscript en export van de database |
+| `database/migrations/` | Migraties en het createscript van de database Jamin |
+| `db/` | Export van de database Jamin |
 | `docs/` | Database Specificatie Tabel |
 | `vids/` | Schermopname van de gerealiseerde scenario's |
 
@@ -44,22 +56,17 @@ cp .env.example .env && php artisan key:generate
 Zet in `.env`:
 ```
 DB_CONNECTION=mysql
-DB_DATABASE=Jamin
+DB_DATABASE=backend_lj_2
 DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-Database vullen en starten:
+Databases aanmaken en starten:
 ```bash
-mysql -u root < database/sql/create_script_jamin_1.sql
 php artisan migrate
 php artisan db:seed
 php artisan serve
 ```
-
-> Let op: het createscript begint met `DROP DATABASE IF EXISTS Jamin`. Draai daarna
-> altijd opnieuw `php artisan migrate` en `php artisan db:seed`, anders ontbreken de
-> tabellen van Laravel zelf en de gebruikers.
 
 ## Testgebruikers
 | E-mail | Rol |

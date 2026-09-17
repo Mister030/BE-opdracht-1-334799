@@ -8,8 +8,9 @@ use stdClass;
 /**
  * Model voor user story 01: Inzien leveringsinformatie product.
  *
- * Alle queries draaien via PDO (DB::select) en gebruiken named binding,
- * zodat SQL-injectie niet mogelijk is.
+ * Alle queries draaien op de connectie `jamin` (zie config/database.php) via
+ * PDO (DB::select) en gebruiken named binding, zodat SQL-injectie niet
+ * mogelijk is.
  */
 class LeveringModel
 {
@@ -28,7 +29,7 @@ class LeveringModel
                 AND        p.IsActief = 1
                 AND        m.IsActief = 1';
 
-        return DB::selectOne($sql, ['productId' => $productId]);
+        return DB::connection('jamin')->selectOne($sql, ['productId' => $productId]);
     }
 
     /**
@@ -52,7 +53,7 @@ class LeveringModel
                          , l.Mobiel
                 ORDER BY   MAX(ppl.DatumLevering) DESC';
 
-        return DB::selectOne($sql, ['productId' => $productId]);
+        return DB::connection('jamin')->selectOne($sql, ['productId' => $productId]);
     }
 
     /**
@@ -74,7 +75,7 @@ class LeveringModel
                 AND        ppl.IsActief  = 1
                 ORDER BY   ppl.DatumLevering ASC';
 
-        return DB::select($sql, ['productId' => $productId]);
+        return DB::connection('jamin')->select($sql, ['productId' => $productId]);
     }
 
     /**
@@ -87,7 +88,7 @@ class LeveringModel
                 WHERE    ppl.ProductId = :productId
                 AND      ppl.IsActief  = 1';
 
-        $resultaat = DB::selectOne($sql, ['productId' => $productId]);
+        $resultaat = DB::connection('jamin')->selectOne($sql, ['productId' => $productId]);
 
         return $resultaat?->DatumEerstVolgendeLevering;
     }

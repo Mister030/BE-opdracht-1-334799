@@ -8,8 +8,9 @@ use Tests\TestCase;
 /**
  * Controle op het scherm Overzicht Magazijn Jamin.
  *
- * Deze test draait tegen de echte MySQL-database Jamin, omdat de tabellen
- * daar met het createscript zijn aangemaakt en niet met migrations.
+ * Deze test draait tegen de echte MySQL-databases: de gebruikers komen uit de
+ * database van Laravel zelf, de productgegevens uit de database Jamin die met
+ * het createscript is aangemaakt.
  */
 class MagazijnOverzichtTest extends TestCase
 {
@@ -17,9 +18,12 @@ class MagazijnOverzichtTest extends TestCase
     {
         parent::setUp();
 
+        // phpunit.xml zet de database standaard op sqlite in-memory. De gebruikers
+        // staan echter in de MySQL-database van Laravel zelf en de productgegevens
+        // in de database Jamin, via de connectie `jamin`.
         config([
-            'database.default'                       => 'mysql',
-            'database.connections.mysql.database'    => 'Jamin',
+            'database.default'                    => 'mysql',
+            'database.connections.mysql.database' => 'backend_lj_2',
         ]);
     }
 

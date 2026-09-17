@@ -8,8 +8,9 @@ use stdClass;
 /**
  * Model voor user story 02: Inzien allergeneninformatie van product.
  *
- * Alle queries draaien via PDO (DB::select) en gebruiken named binding,
- * zodat SQL-injectie niet mogelijk is.
+ * Alle queries draaien op de connectie `jamin` (zie config/database.php) via
+ * PDO (DB::select) en gebruiken named binding, zodat SQL-injectie niet
+ * mogelijk is.
  */
 class AllergeenModel
 {
@@ -25,7 +26,7 @@ class AllergeenModel
                 WHERE    p.Id = :productId
                 AND      p.IsActief = 1';
 
-        return DB::selectOne($sql, ['productId' => $productId]);
+        return DB::connection('jamin')->selectOne($sql, ['productId' => $productId]);
     }
 
     /**
@@ -46,6 +47,6 @@ class AllergeenModel
                 AND        a.IsActief    = 1
                 ORDER BY   a.Naam ASC';
 
-        return DB::select($sql, ['productId' => $productId]);
+        return DB::connection('jamin')->select($sql, ['productId' => $productId]);
     }
 }
