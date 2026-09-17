@@ -3,6 +3,7 @@
 namespace Tests\Feature\Jamin;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 /**
@@ -46,6 +47,32 @@ class MagazijnOverzichtTest extends TestCase
             strpos($inhoud, '8719587231278'),
             'De producten staan niet oplopend gesorteerd op Barcode.'
         );
+    }
+
+    public function test_de_iconen_linken_naar_het_juiste_product(): void
+    {
+        $gebruiker = User::where('rolename', 'magazijnmedewerker')->firstOrFail();
+
+        $response = $this->actingAs($gebruiker)->get('/magazijn');
+        $inhoud   = $response->getContent();
+
+        foreach (['Mintnopjes', 'Winegums', 'Zoute Ruitjes', 'Cola Flesjes'] as $naam) {
+            $productId = (int) DB::connection('jamin')->selectOne(
+                'SELECT Id FROM Product WHERE Naam = :naam',
+                ['naam' => $naam]
+            )->Id;
+
+            $this->assertStringContainsString(
+                route('levering.show', $productId, absolute: false),
+                $inhoud,
+                "Het vraagteken-icoon van {$naam} linkt niet naar het juiste product."
+            );
+            $this->assertStringContainsString(
+                route('allergeen.show', $productId, absolute: false),
+                $inhoud,
+                "Het kruis-icoon van {$naam} linkt niet naar het juiste product."
+            );
+        }
     }
 
     public function test_overzicht_is_afgeschermd_voor_gasten(): void
