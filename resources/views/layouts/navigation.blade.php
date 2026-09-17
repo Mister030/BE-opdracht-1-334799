@@ -18,6 +18,14 @@
                 </div>
                 @if (Auth::check() && in_array(Auth::user()->rolename, ['magazijnmedewerker', 'magazijnbeheerder']))
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('magazijn.index')"
+                                    :active="request()->routeIs('magazijn.index')">
+                            {{ __('Overzicht Magazijn Jamin') }}
+                        </x-nav-link>
+                    </div>
+                @endif
+                @if (Auth::check() && in_array(Auth::user()->rolename, ['magazijnmedewerker', 'magazijnbeheerder']))
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('magazijnmedewerker.index')"
                                     :active="request()->routeIs('magazijnmedewerker.index')">
                             {{ __('Magazijnmedewerker') }}
