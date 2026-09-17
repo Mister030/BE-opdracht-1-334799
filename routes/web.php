@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LeveringController;
 use App\Http\Controllers\MagazijnController;
 use App\Http\Controllers\MagazijnmedewerkerController;
 use App\Http\Controllers\InkoperController;
@@ -13,6 +14,11 @@ Route::get('/', function () {
 
 Route::get('/magazijn', [MagazijnController::class, 'index'])
     ->name('magazijn.index')
+    ->middleware(['auth', 'role:magazijnmedewerker,magazijnbeheerder']);
+
+Route::get('/levering/{productId}', [LeveringController::class, 'show'])
+    ->whereNumber('productId')
+    ->name('levering.show')
     ->middleware(['auth', 'role:magazijnmedewerker,magazijnbeheerder']);
 
 Route::get('/magazijnmedewerker', [MagazijnmedewerkerController::class, 'index'])

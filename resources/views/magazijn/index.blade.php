@@ -32,7 +32,9 @@
                                         <span class="text-red-600 font-bold text-lg">&#10007;</span>
                                     </td>
                                     <td class="border border-gray-300 px-4 py-2 text-center">
-                                        <span class="text-blue-600 font-bold text-lg">?</span>
+                                        <a href="{{ route('levering.show', $product->ProductId) }}"
+                                           title="Leveringsinformatie van {{ $product->Naam }}"
+                                           class="text-blue-600 font-bold text-lg">?</a>
                                     </td>
                                 </tr>
                             @empty
