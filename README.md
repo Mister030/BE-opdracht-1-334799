@@ -1,6 +1,6 @@
 # BE-opdracht 01 — Realiseren van User Stories (Jamin)
 
-Laravel-applicatie voor het bedrijf Jamin. Klas IO-SD-2509.
+Laravel-applicatie voor het bedrijf Jamin. Klas IO-SD-2509, studentnummer 334799.
 
 ## Gerealiseerde user stories
 
