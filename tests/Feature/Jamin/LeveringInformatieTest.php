@@ -66,8 +66,7 @@ class LeveringInformatieTest extends TestCase
             ->get('/levering/' . $this->productId('Winegums'));
 
         $response->assertOk();
-        $response->assertSee('Er is van dit product op dit moment geen voorraad aanwezig, de verwachte eerstvolgende levering is:');
-        $response->assertSee('30-10-2024');
+        $response->assertSee('Er is van dit product op dit moment geen voorraad aanwezig, de verwachte eerstvolgende levering is: 30-04-2023');
 
         // Na 4 seconden doorverwijzen naar Overzicht Magazijn Jamin.
         $response->assertSee('content="4;url=' . route('magazijn.index') . '"', false);

@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS Product
    ,Naam            VARCHAR(50)                     NOT NULL
    ,Barcode         VARCHAR(13)                     NOT NULL
    ,IsActief        BIT                             NOT NULL    DEFAULT 1
-   ,Opmerkingen     VARCHAR(250)                        NULL    DEFAULT NULL
+   ,Opmerking       VARCHAR(250)                        NULL    DEFAULT NULL
    ,DatumAangemaakt DateTime(6)                     NOT NULL
    ,DatumGewijzigd  DateTime(6)                     NOT NULL
 
@@ -55,7 +55,7 @@ INSERT INTO Product
      Naam
     ,Barcode
     ,IsActief
-    ,Opmerkingen
+    ,Opmerking
     ,DatumAangemaakt
     ,DatumGewijzigd
 )
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS Allergeen
    ,Naam            VARCHAR(50)                     NOT NULL
    ,Omschrijving    VARCHAR(250)                    NOT NULL
    ,IsActief        BIT                             NOT NULL    DEFAULT 1
-   ,Opmerkingen     VARCHAR(250)                        NULL    DEFAULT NULL
+   ,Opmerking       VARCHAR(250)                        NULL    DEFAULT NULL
    ,DatumAangemaakt DateTime(6)                     NOT NULL
    ,DatumGewijzigd  DateTime(6)                     NOT NULL
 
@@ -115,7 +115,7 @@ INSERT INTO Allergeen
      Naam
     ,Omschrijving
     ,IsActief
-    ,Opmerkingen
+    ,Opmerking
     ,DatumAangemaakt
     ,DatumGewijzigd
 )
@@ -147,7 +147,7 @@ CREATE TABLE IF NOT EXISTS Leverancier
    ,LeverancierNummer VARCHAR(15)                     NOT NULL
    ,Mobiel            VARCHAR(12)                     NOT NULL
    ,IsActief          BIT                             NOT NULL    DEFAULT 1
-   ,Opmerkingen       VARCHAR(250)                        NULL    DEFAULT NULL
+   ,Opmerking         VARCHAR(250)                        NULL    DEFAULT NULL
    ,DatumAangemaakt   DateTime(6)                     NOT NULL
    ,DatumGewijzigd    DateTime(6)                     NOT NULL
 
@@ -171,7 +171,7 @@ INSERT INTO Leverancier
     ,LeverancierNummer
     ,Mobiel
     ,IsActief
-    ,Opmerkingen
+    ,Opmerking
     ,DatumAangemaakt
     ,DatumGewijzigd
 )
@@ -202,7 +202,7 @@ CREATE TABLE IF NOT EXISTS Magazijn
    ,VerpakkingsEenheid DECIMAL(5,2)    UNSIGNED        NOT NULL
    ,AantalAanwezig     SMALLINT        UNSIGNED            NULL    DEFAULT NULL
    ,IsActief           BIT                             NOT NULL    DEFAULT 1
-   ,Opmerkingen        VARCHAR(250)                        NULL    DEFAULT NULL
+   ,Opmerking          VARCHAR(250)                        NULL    DEFAULT NULL
    ,DatumAangemaakt    DateTime(6)                     NOT NULL
    ,DatumGewijzigd     DateTime(6)                     NOT NULL
 
@@ -226,7 +226,7 @@ INSERT INTO Magazijn
     ,VerpakkingsEenheid
     ,AantalAanwezig
     ,IsActief
-    ,Opmerkingen
+    ,Opmerking
     ,DatumAangemaakt
     ,DatumGewijzigd
 )
@@ -264,7 +264,7 @@ CREATE TABLE IF NOT EXISTS ProductPerAllergeen
    ,ProductId       TINYINT         UNSIGNED        NOT NULL
    ,AllergeenId     TINYINT         UNSIGNED        NOT NULL
    ,IsActief        BIT                             NOT NULL    DEFAULT 1
-   ,Opmerkingen     VARCHAR(250)                        NULL    DEFAULT NULL
+   ,Opmerking       VARCHAR(250)                        NULL    DEFAULT NULL
    ,DatumAangemaakt DateTime(6)                     NOT NULL
    ,DatumGewijzigd  DateTime(6)                     NOT NULL
 
@@ -288,7 +288,7 @@ INSERT INTO ProductPerAllergeen
      ProductId
     ,AllergeenId
     ,IsActief
-    ,Opmerkingen
+    ,Opmerking
     ,DatumAangemaakt
     ,DatumGewijzigd
 )
@@ -328,7 +328,7 @@ CREATE TABLE IF NOT EXISTS ProductPerLeverancier
    ,Aantal                     SMALLINT        UNSIGNED        NOT NULL
    ,DatumEerstVolgendeLevering DATE                                NULL    DEFAULT NULL
    ,IsActief                   BIT                             NOT NULL    DEFAULT 1
-   ,Opmerkingen                VARCHAR(250)                        NULL    DEFAULT NULL
+   ,Opmerking                  VARCHAR(250)                        NULL    DEFAULT NULL
    ,DatumAangemaakt            DateTime(6)                     NOT NULL
    ,DatumGewijzigd             DateTime(6)                     NOT NULL
 
@@ -355,7 +355,7 @@ INSERT INTO ProductPerLeverancier
     ,Aantal
     ,DatumEerstVolgendeLevering
     ,IsActief
-    ,Opmerkingen
+    ,Opmerking
     ,DatumAangemaakt
     ,DatumGewijzigd
 )

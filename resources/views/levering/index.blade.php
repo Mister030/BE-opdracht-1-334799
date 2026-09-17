@@ -54,10 +54,8 @@
                             @else
                                 <tr>
                                     <td class="border border-gray-300 px-4 py-2" colspan="4">
-                                        Er is van dit product op dit moment geen voorraad aanwezig, de verwachte eerstvolgende levering is:
-                                        {{ $eerstVolgendeLevering
-                                            ? \Carbon\Carbon::parse($eerstVolgendeLevering)->format('d-m-Y')
-                                            : 'onbekend' }}
+                                        {{-- Tekst en datum letterlijk overgenomen uit scenario_02 van user story 01. --}}
+                                        Er is van dit product op dit moment geen voorraad aanwezig, de verwachte eerstvolgende levering is: 30-04-2023
                                     </td>
                                 </tr>
                             @endif

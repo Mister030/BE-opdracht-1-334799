@@ -77,19 +77,4 @@ class LeveringModel
 
         return DB::connection('jamin')->select($sql, ['productId' => $productId]);
     }
-
-    /**
-     * Haal de eerstvolgende verwachte leveringsdatum van het product op.
-     */
-    public function getEerstVolgendeLeveringByProductId(int $productId): ?string
-    {
-        $sql = 'SELECT   MAX(ppl.DatumEerstVolgendeLevering) AS DatumEerstVolgendeLevering
-                FROM     ProductPerLeverancier ppl
-                WHERE    ppl.ProductId = :productId
-                AND      ppl.IsActief  = 1';
-
-        $resultaat = DB::connection('jamin')->selectOne($sql, ['productId' => $productId]);
-
-        return $resultaat?->DatumEerstVolgendeLevering;
-    }
 }

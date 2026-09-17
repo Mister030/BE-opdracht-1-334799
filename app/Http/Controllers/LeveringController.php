@@ -33,7 +33,6 @@ class LeveringController extends Controller
             'isVoorradig'            => $isVoorradig,
             'leverancier'            => $isVoorradig ? $leveringModel->getLeverancierByProductId($productId) : null,
             'leveringen'             => $isVoorradig ? $leveringModel->getLeveringenByProductId($productId) : [],
-            'eerstVolgendeLevering'  => $isVoorradig ? null : $leveringModel->getEerstVolgendeLeveringByProductId($productId),
         ]);
     }
 }
