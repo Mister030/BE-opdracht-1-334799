@@ -29,7 +29,9 @@
                                     <td class="border border-gray-300 px-4 py-2">{{ $product->VerpakkingsEenheid }}</td>
                                     <td class="border border-gray-300 px-4 py-2">{{ $product->AantalAanwezig }}</td>
                                     <td class="border border-gray-300 px-4 py-2 text-center">
-                                        <span class="text-red-600 font-bold text-lg">&#10007;</span>
+                                        <a href="{{ route('allergeen.show', $product->ProductId) }}"
+                                           title="Allergeneninformatie van {{ $product->Naam }}"
+                                           class="text-red-600 font-bold text-lg">&#10007;</a>
                                     </td>
                                     <td class="border border-gray-300 px-4 py-2 text-center">
                                         <a href="{{ route('levering.show', $product->ProductId) }}"
