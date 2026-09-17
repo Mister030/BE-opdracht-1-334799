@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AllergeenController;
 use App\Http\Controllers\LeveringController;
 use App\Http\Controllers\MagazijnController;
 use App\Http\Controllers\MagazijnmedewerkerController;
@@ -14,6 +15,11 @@ Route::get('/', function () {
 
 Route::get('/magazijn', [MagazijnController::class, 'index'])
     ->name('magazijn.index')
+    ->middleware(['auth', 'role:magazijnmedewerker,magazijnbeheerder']);
+
+Route::get('/allergeen/{productId}', [AllergeenController::class, 'show'])
+    ->whereNumber('productId')
+    ->name('allergeen.show')
     ->middleware(['auth', 'role:magazijnmedewerker,magazijnbeheerder']);
 
 Route::get('/levering/{productId}', [LeveringController::class, 'show'])
