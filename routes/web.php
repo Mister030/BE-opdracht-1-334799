@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MagazijnController;
 use App\Http\Controllers\MagazijnmedewerkerController;
 use App\Http\Controllers\InkoperController;
 use App\Http\Controllers\MagazijnbeheerderController;
@@ -9,6 +10,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
+Route::get('/magazijn', [MagazijnController::class, 'index'])
+    ->name('magazijn.index')
+    ->middleware(['auth', 'role:magazijnmedewerker,magazijnbeheerder']);
 
 Route::get('/magazijnmedewerker', [MagazijnmedewerkerController::class, 'index'])
     ->name('magazijnmedewerker.index')
